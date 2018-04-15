@@ -46,6 +46,7 @@ class PersonasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def persona_params
-      params.require(:persona).permit(:dni, :apellido, :nombre)
+      #params.require(:persona).permit(:dni, :apellido, :nombre)
+      params.permit(:dni, :apellido, :nombre)
     end
 end
