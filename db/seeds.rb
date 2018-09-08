@@ -6,9 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Persona.create(dni: 31343209, apellido: 'Torsiglieri', nombre: 'Marcos')
-Persona.create(dni: 32343209, apellido: 'Palama', nombre: 'Omar Arnaldo')
-Persona.create(dni: 33343209, apellido: 'Gonzalez', nombre: 'Cristian')
-Persona.create(dni: 34343209, apellido: 'Ruben', nombre: 'Marco')
-Persona.create(dni: 35343209, apellido: 'Herrera', nombre: 'German')
-Persona.create(dni: 36343209, apellido: 'Carrizo', nombre: 'Federico')
+TipoDocumento.create(descripcion: 'DNI')
+TipoDocumento.create(descripcion: 'LC')
+TipoDocumento.create(descripcion: 'LE')
+TipoDocumento.create(descripcion: 'CUIT')
+
+Provincium.create(nombre: 'Buenos Aires')
+Provincium.create(nombre: 'Chubut')
+
+Localidad.create(nombre: 'La Plata', provincia_id: 1)
+Localidad.create(nombre: 'Rawson', provincia_id: 2)
+Localidad.create(nombre: 'Trelew', provincia_id: 2)
+
+Persona.create(tipo_documento_id: 1, numero_documento: 31343209, apellido: 'Torsiglieri', nombre: 'Marcos', localidad_id: 1)
+Persona.create(tipo_documento_id: 1, numero_documento: 32343209, apellido: 'Palama', nombre: 'Omar Arnaldo', localidad_id: 2)
+Persona.create(tipo_documento_id: 1, numero_documento: 33343209, apellido: 'Gonzalez', nombre: 'Cristian', localidad_id: 1)
+Persona.create(tipo_documento_id: 1, numero_documento: 34343209, apellido: 'Ruben', nombre: 'Marco', localidad_id: 1)
+Persona.create(tipo_documento_id: 1, numero_documento: 35343209, apellido: 'Herrera', nombre: 'German', localidad_id: 2)
+Persona.create(tipo_documento_id: 1, numero_documento: 36343209, apellido: 'Carrizo', nombre: 'Federico', localidad_id: 2)

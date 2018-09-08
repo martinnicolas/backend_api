@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  dni: 1
+  tipo_documento: one
+  numero_documento: 
   apellido: MyString
   nombre: MyString
+  localidad: one
 
 two:
-  dni: 1
+  tipo_documento: two
+  numero_documento: 
   apellido: MyString
   nombre: MyString
+  localidad: two

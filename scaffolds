@@ -1,0 +1,4 @@
+rails g scaffold Provincia nombre:string
+rails g scaffold Localidad nombre:string provincia:references
+rails g scaffold TipoDocumento descripcion:string
+rails g scaffold Persona tipo_documento:references numero_documento:bigint apellido:string nombre:string localidad:references

@@ -10,14 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414180904) do
+ActiveRecord::Schema.define(version: 20180811211700) do
+
+  create_table "localidads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nombre"
+    t.integer  "provincia_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["provincia_id"], name: "index_localidads_on_provincia_id", using: :btree
+  end
 
   create_table "personas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "dni"
+    t.integer  "tipo_documento_id"
+    t.bigint   "numero_documento"
     t.string   "apellido"
+    t.string   "nombre"
+    t.integer  "localidad_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["localidad_id"], name: "index_personas_on_localidad_id", using: :btree
+    t.index ["tipo_documento_id"], name: "index_personas_on_tipo_documento_id", using: :btree
+  end
+
+  create_table "provincia", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "tipo_documentos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_foreign_key "localidads", "provincia", column: "provincia_id"
+  add_foreign_key "personas", "localidads"
+  add_foreign_key "personas", "tipo_documentos"
 end

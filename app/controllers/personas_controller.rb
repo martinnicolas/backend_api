@@ -5,12 +5,13 @@ class PersonasController < ApplicationController
   def index
     @personas = Persona.all
 
-    render json: @personas
+    #render json: @personas.to_json(include: { :tipo_documento => { :only => :descripcion }})
+    render json: @personas.to_json(include: [:tipo_documento, { :localidad => { :include => :provincia }}])
   end
 
   # GET /personas/1
   def show
-    render json: @persona
+    render json: @persona.to_json(include: [:tipo_documento, { :localidad => { :include => :provincia }}])
   end
 
   # POST /personas
@@ -46,7 +47,7 @@ class PersonasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def persona_params
-      #params.require(:persona).permit(:dni, :apellido, :nombre)
-      params.permit(:dni, :apellido, :nombre)
+      #params.require(:persona).permit(:tipo_documento_id, :numero_documento, :apellido, :nombre, :localidad_id)
+      params.permit(:tipo_documento_id, :numero_documento, :apellido, :nombre, :localidad_id)
     end
 end
