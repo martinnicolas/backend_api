@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20180811211700) do
 
-  create_table "localidads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "localidads", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "provincia_id"
     t.datetime "created_at",   null: false
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180811211700) do
     t.index ["provincia_id"], name: "index_localidads_on_provincia_id", using: :btree
   end
 
-  create_table "personas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "personas", force: :cascade do |t|
     t.integer  "tipo_documento_id"
     t.bigint   "numero_documento"
     t.string   "apellido"
@@ -32,13 +35,13 @@ ActiveRecord::Schema.define(version: 20180811211700) do
     t.index ["tipo_documento_id"], name: "index_personas_on_tipo_documento_id", using: :btree
   end
 
-  create_table "provincia", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "provincia", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tipo_documentos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tipo_documentos", force: :cascade do |t|
     t.string   "descripcion"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
