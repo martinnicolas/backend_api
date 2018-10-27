@@ -1,0 +1,262 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/personas": {
+      "post": {
+        "summary": "Crea una persona",
+        "tags": [
+          "Personas"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "persona",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tipo_documento_id": {
+                  "type": "integer"
+                },
+                "numero_documento": {
+                  "type": "integer"
+                },
+                "apellido": {
+                  "type": "string"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "localidad_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "dni",
+                "apellido",
+                "nombre"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "persona creada"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Obtiene todas las personas",
+        "tags": [
+          "Personas"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "404": {
+            "description": "url invalida"
+          }
+        }
+      }
+    },
+    "/personas/{id}": {
+      "get": {
+        "summary": "Obtiene una persona",
+        "tags": [
+          "Personas"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "id encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tipo_documento_id": {
+                  "type": "integer"
+                },
+                "numero_documento": {
+                  "type": "integer"
+                },
+                "apellido": {
+                  "type": "string"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "localidad_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "dni",
+                "apellido",
+                "nombre"
+              ]
+            }
+          },
+          "404": {
+            "description": "persona no encontrada"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualiza una persona",
+        "tags": [
+          "Personas"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "name": "persona",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tipo_documento_id": {
+                  "type": "integer"
+                },
+                "numero_documento": {
+                  "type": "integer"
+                },
+                "apellido": {
+                  "type": "string"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "localidad_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "dni",
+                "apellido",
+                "nombre"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "id encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tipo_documento_id": {
+                  "type": "integer"
+                },
+                "numero_documento": {
+                  "type": "integer"
+                },
+                "apellido": {
+                  "type": "string"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "localidad_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "dni",
+                "apellido",
+                "nombre"
+              ]
+            }
+          },
+          "404": {
+            "description": "persona no encontrada"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Elimina una persona",
+        "tags": [
+          "Personas"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "id encontrado",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tipo_documento_id": {
+                  "type": "integer"
+                },
+                "numero_documento": {
+                  "type": "integer"
+                },
+                "apellido": {
+                  "type": "string"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "localidad_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "dni",
+                "apellido",
+                "nombre"
+              ]
+            }
+          },
+          "404": {
+            "description": "persona no encontrada"
+          }
+        }
+      }
+    }
+  }
+}
